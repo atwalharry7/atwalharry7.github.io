@@ -1,0 +1,4 @@
+# Common commands
+
+run_local_webserver:
+    bundle exec jekyll serve --watch --baseurl --livereload

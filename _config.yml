@@ -13,12 +13,10 @@
 # you will see them accessed via Aleksandr Hovhannisyan, , and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via .
-title: Your awesome title
-email: your-email@example.com
+title: Harry Atwal's Blog
+email: harry@harryatwal.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Learning one day at a time, living one day at a time, and sharing one day at a time.
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://harryatwal.com" # the base hostname & protocol for your site, e.g. http://example.com
@@ -28,7 +26,7 @@ port: 4001
 
 # Build settings
 markdown: kramdown
-theme: null
+theme: jekyll-theme-modernist
 remote_theme: pages-themes/modernist@v0.2.0
 plugins:
   - jekyll-feed
@@ -45,7 +43,7 @@ defaults:
     values:
       is_post: true
       layout: post
-      permalink: /blog/:categories/:title
+      permalink: /blog/:title
   -
     scope:
       type: pages

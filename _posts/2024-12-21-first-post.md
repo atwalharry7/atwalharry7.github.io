@@ -1,12 +1,12 @@
 ---
-title:  "project"
+title:  "first post"
 date:   2024-12-24 07:40:59 -0500
-# tags: My blog
 is_post: true
 layout: post
 tags: update
 permalink: /blog/project
 ---
+# My First Post
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 

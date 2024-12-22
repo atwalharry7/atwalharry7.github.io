@@ -7,8 +7,6 @@ title: "Harry Atwal"
 permalink: /
 ---
 
-# Hello, Jekyll!
----
 
 # Harry Atwal
 
