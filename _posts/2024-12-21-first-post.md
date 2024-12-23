@@ -2,7 +2,7 @@
 title:  "first post"
 date:   2024-12-24 07:40:59 -0500
 is_post: true
-layout: post
+layout: default
 tags: update
 permalink: /blog/project
 ---
