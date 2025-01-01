@@ -43,9 +43,9 @@ Mountain biking isn’t just about physical endurance – it’s about pushing y
 The lessons learned on the bike — persistence, adaptability, and embracing discomfort — often translate into other areas of life. This personal growth became especially valuable during uncertain times.
 
 ## 6. A New Hobby for the Long Term
-What started as a pandemic escape has turned into a lifelong passion for many. Mountain biking isn’t just a temporary trend; it’s a sustainable activity that offers long-term health benefits and personal satisfaction.
+What started as a pandemic escape has turned into a lifelong passion for many. Mountain biking isn’t just a temporary trend; it’s a sustainable activity that offers long-term health benefits and personal satisfaction. From screeming downhill to leisurely rides, there’s something for everyone. I personally, perfer the downhill.
 
-With the infrastructure around mountain biking improving (more trails, better bike technology, and thriving communities), it’s easier than ever to keep riding.
+With the infrastructure around mountain biking improving (more trails, better bike technology, and thriving communities), it’s easier than ever to keep riding. Seth's bike hacks is one of my favorite youtube channels. Dude is a legend.
 
 ## Final Thoughts
 The pandemic shifted our priorities, reminding us of the importance of health, nature, and human connection. Mountain biking stood out as a way to meet all these needs while embracing adventure.
