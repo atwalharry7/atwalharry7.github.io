@@ -20,6 +20,8 @@ I am a machine learning researcher with experience in various domains including 
 
 The last 7 years i've worked in machine vision projects that incoroporate machine learning. I've worked on projects that range from simple object detection to complex image segmentation. I've also worked on projects that involve reinforcement learning and natural language processing. As a researcher at the University of North Carolina Wilmington; I was able to work on various projects that involved machine learning and computer vision. 
 
+## [blog](/blog)
+
 ## Resume
 
 You can view my resume [here](/content/AtwalH-Modern2024.pdf).
