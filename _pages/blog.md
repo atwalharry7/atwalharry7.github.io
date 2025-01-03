@@ -12,6 +12,7 @@ permalink: /blog
   <li><a href="{{ post.url }}" class="post-preview">{{ post.title }}</a></li>
   {% endfor %}
 
+  \n\n
   New Posts
   {% for post in site.posts %}
   <li><a href="{{ post.url }}" class="post-preview">{{ post.title }}</a></li>
