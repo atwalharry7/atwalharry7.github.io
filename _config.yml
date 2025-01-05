@@ -31,7 +31,7 @@ plugins:
   - jekyll-feed
   # - jekyll-remote-theme 
 include: [ _pages, _posts ]
-
+avatar: /assets/images/Logo.png
 
 # Set default apperance for different page types 
 defaults:
