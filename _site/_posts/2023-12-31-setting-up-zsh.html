@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Setting Up ZSH and Oh My Zsh on Ubuntu: A Complete Guide | Harry’s Website</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Setting Up ZSH and Oh My Zsh on Ubuntu: A Complete Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A comprehensive guide to installing and configuring Zsh and Oh My Zsh on Ubuntu, including themes and plugins setup for a better terminal experience." />
+<meta property="og:description" content="A comprehensive guide to installing and configuring Zsh and Oh My Zsh on Ubuntu, including themes and plugins setup for a better terminal experience." />
+<link rel="canonical" href="http://0.0.0.0:50988/_posts/2023-12-31-setting-up-zsh.html" />
+<meta property="og:url" content="http://0.0.0.0:50988/_posts/2023-12-31-setting-up-zsh.html" />
+<meta property="og:site_name" content="Harry’s Website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-12-31T07:40:59-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Setting Up ZSH and Oh My Zsh on Ubuntu: A Complete Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-12-31T07:40:59-05:00","datePublished":"2023-12-31T07:40:59-05:00","description":"A comprehensive guide to installing and configuring Zsh and Oh My Zsh on Ubuntu, including themes and plugins setup for a better terminal experience.","headline":"Setting Up ZSH and Oh My Zsh on Ubuntu: A Complete Guide","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:50988/_posts/2023-12-31-setting-up-zsh.html"},"url":"http://0.0.0.0:50988/_posts/2023-12-31-setting-up-zsh.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=3ed4c76fe1a4cb374077a1c422ccd461bfd427fd">
+    <link rel="stylesheet" href="/assets/css/navigation.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header >
+        <h1>Harry's Website</h1>
+        
+          <p>Learning one day at a time, living one day at a time, and sharing one day at a time.</p>
+        
+        <nav class="site-nav">
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/posts" class="nav-link">Blog Posts</a>
+  </div>
+</nav>
+        <!-- <p class="view"><a href="https://github.com/atwalharry7/atwalharry7.github.io">View the Project on GitHub <small></small></a></p> -->
+        <ul>
+        
+          <!-- <li><a href="https://github.com/atwalharry7/atwalharry7.github.io">View On <strong>GitHub</strong></a></li> -->
+        </ul>
+      </header>
+      <section>
+
+      <h1 id="zsh-as-a-shell">ZSH as a shell</h1>
+
+<p>Today I discovered oh-my-zsh and i am never going back. well I should say, I discovered ZSH. ZSH  is a shell designed for interactive use, although it is also a powerful scripting language. Many of the useful features of bash, ksh, and tcsh were incorporated into zsh; many original features were added. The shell offers many improvements over bash, such as:</p>
+
+<h2 id="installing-zsh">Installing ZSH</h2>
+
+<p>Installing zsh is as simple as running the following command:</p>
+
+<p>How to Install Zsh and Oh My Zsh on Ubuntu</p>
+
+<p>If you’re looking to enhance your terminal experience on Ubuntu, switching to <strong>Zsh (Z Shell)</strong> and installing <strong>Oh My Zsh</strong> is a fantastic choice. Oh My Zsh is a framework that adds themes, plugins, and better usability to Zsh, making your terminal more powerful and enjoyable to use.</p>
+
+<p>In this guide, I’ll walk you through the step-by-step process of installing Zsh and setting up Oh My Zsh on Ubuntu.</p>
+
+<h2 id="why-use-zsh">Why Use Zsh?</h2>
+
+<p>Zsh offers several advantages over Bash, the default shell in Ubuntu:</p>
+<ul>
+  <li><strong>Auto-correction</strong> for command typos.</li>
+  <li><strong>Suggestions and autocompletion</strong> for directories and commands.</li>
+  <li><strong>Plugins and themes</strong> to customize and enhance your workflow.</li>
+  <li><strong>Rich customization</strong> options.</li>
+</ul>
+
+<p>When combined with Oh My Zsh, you unlock even more possibilities for improving productivity.</p>
+
+<h2 id="step-1-installing-zsh">Step 1: Installing Zsh</h2>
+
+<ol>
+  <li><strong>Update your package list:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Install Zsh:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>zsh
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Verify the installation:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zsh <span class="nt">--version</span>
+</code></pre></div>    </div>
+    <p>You should see the version number of Zsh if it was installed correctly.</p>
+  </li>
+  <li><strong>Make Zsh your default shell:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chsh <span class="nt">-s</span> <span class="si">$(</span>which zsh<span class="si">)</span>
+</code></pre></div>    </div>
+    <p>After running this command, restart your terminal or log out and back in.</p>
+  </li>
+</ol>
+
+<h2 id="step-2-installing-oh-my-zsh">Step 2: Installing Oh My Zsh</h2>
+
+<ol>
+  <li><strong>Download and install Oh My Zsh</strong> using curl or wget:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div>    </div>
+    <p><strong>OR</strong></p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh <span class="nt">-O</span> -<span class="si">)</span><span class="s2">"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Follow the prompts</strong> during the installation. If Zsh launches after installation, you’re good to go!</p>
+  </li>
+  <li><strong>Confirm installation by checking your shell:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nv">$SHELL</span>
+</code></pre></div>    </div>
+    <p>The output should display <code class="language-plaintext highlighter-rouge">/usr/bin/zsh</code>.</p>
+  </li>
+</ol>
+
+<h2 id="step-3-customizing-oh-my-zsh">Step 3: Customizing Oh My Zsh</h2>
+
+<h3 id="1-changing-the-theme">1. Changing the Theme:</h3>
+<ul>
+  <li>Open the Zsh configuration file:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> nano ~/.zshrc
+</code></pre></div>    </div>
+  </li>
+  <li>Look for the line that starts with <code class="language-plaintext highlighter-rouge">ZSH_THEME="robbyrussell"</code> (default theme).</li>
+  <li>Replace <code class="language-plaintext highlighter-rouge">robbyrussell</code> with any theme from the <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">Oh My Zsh theme list</a>.</li>
+  <li>Example:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">ZSH_THEME</span><span class="o">=</span><span class="s2">"agnoster"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Save and exit (<code class="language-plaintext highlighter-rouge">CTRL + O</code>, <code class="language-plaintext highlighter-rouge">ENTER</code>, <code class="language-plaintext highlighter-rouge">CTRL + X</code>).</li>
+  <li>Restart the terminal to see the changes:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">source</span> ~/.zshrc
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="2-adding-plugins">2. Adding Plugins:</h3>
+<ul>
+  <li>Oh My Zsh comes with useful plugins that can be enabled by editing <code class="language-plaintext highlighter-rouge">.zshrc</code>.</li>
+  <li>To enable plugins like <code class="language-plaintext highlighter-rouge">git</code> or <code class="language-plaintext highlighter-rouge">docker</code>, modify the <code class="language-plaintext highlighter-rouge">plugins</code> line:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">plugins</span><span class="o">=(</span>git docker<span class="o">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Save and reload:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">source</span> ~/.zshrc
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="step-4-testing-and-exploring">Step 4: Testing and Exploring</h2>
+
+<p>Now that you have Zsh and Oh My Zsh set up, explore the different themes and plugins to tailor your terminal experience. Oh My Zsh has a <strong>large community</strong> and <strong>rich documentation</strong> to help you customize further.</p>
+
+<h2 id="troubleshooting-tips">Troubleshooting Tips</h2>
+
+<ul>
+  <li><strong>If Zsh doesn’t start by default:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> zsh
+</code></pre></div>    </div>
+    <p>Then, re-run the <code class="language-plaintext highlighter-rouge">chsh</code> command to set it as the default shell.</p>
+  </li>
+  <li><strong>If Oh My Zsh installation fails:</strong> <br />
+ Ensure you have <code class="language-plaintext highlighter-rouge">curl</code> or <code class="language-plaintext highlighter-rouge">wget</code> installed:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sudo </span>apt <span class="nb">install </span>curl wget
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+
+      </section>
+    </div>
+    <footer>
+    
+      <p>Webpage maintained by <a href="https://github.com/atwalharry7">atwalharry7</a></p>
+    
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  </body>
+</html>

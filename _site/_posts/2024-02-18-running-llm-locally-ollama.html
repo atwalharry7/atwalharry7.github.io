@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Running Large Language Models Locally with Ollama: A Practical Guide | Harry’s Website</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Running Large Language Models Locally with Ollama: A Practical Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A step-by-step guide to running powerful language models locally on your computer using Ollama, including model selection and optimization tips." />
+<meta property="og:description" content="A step-by-step guide to running powerful language models locally on your computer using Ollama, including model selection and optimization tips." />
+<link rel="canonical" href="http://0.0.0.0:50988/_posts/2024-02-18-running-llm-locally-ollama.html" />
+<meta property="og:url" content="http://0.0.0.0:50988/_posts/2024-02-18-running-llm-locally-ollama.html" />
+<meta property="og:site_name" content="Harry’s Website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-02-18T10:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Running Large Language Models Locally with Ollama: A Practical Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-02-18T10:00:00-05:00","datePublished":"2024-02-18T10:00:00-05:00","description":"A step-by-step guide to running powerful language models locally on your computer using Ollama, including model selection and optimization tips.","headline":"Running Large Language Models Locally with Ollama: A Practical Guide","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:50988/_posts/2024-02-18-running-llm-locally-ollama.html"},"url":"http://0.0.0.0:50988/_posts/2024-02-18-running-llm-locally-ollama.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=3ed4c76fe1a4cb374077a1c422ccd461bfd427fd">
+    <link rel="stylesheet" href="/assets/css/navigation.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header >
+        <h1>Harry's Website</h1>
+        
+          <p>Learning one day at a time, living one day at a time, and sharing one day at a time.</p>
+        
+        <nav class="site-nav">
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/posts" class="nav-link">Blog Posts</a>
+  </div>
+</nav>
+        <!-- <p class="view"><a href="https://github.com/atwalharry7/atwalharry7.github.io">View the Project on GitHub <small></small></a></p> -->
+        <ul>
+        
+          <!-- <li><a href="https://github.com/atwalharry7/atwalharry7.github.io">View On <strong>GitHub</strong></a></li> -->
+        </ul>
+      </header>
+      <section>
+
+      <h1 id="running-large-language-models-locally-with-ollama">Running Large Language Models Locally with Ollama</h1>
+
+<p>In this guide, I’ll show you how to run powerful language models locally on your computer using Ollama, a tool that makes it easy to run and manage LLMs locally. This is particularly useful for developers who want to experiment with AI without relying on cloud services or when working with sensitive data.</p>
+
+<h2 id="what-is-ollama">What is Ollama?</h2>
+
+<p>Ollama is an open-source tool that simplifies running large language models locally. It provides:</p>
+<ul>
+  <li>Easy installation and setup</li>
+  <li>Access to various optimized models</li>
+  <li>Command-line and API interfaces</li>
+  <li>Model management capabilities</li>
+  <li>Cross-platform support (macOS, Linux, and Windows via WSL)</li>
+</ul>
+
+<h2 id="system-requirements">System Requirements</h2>
+
+<p>Before installing Ollama, ensure your system meets these minimum requirements:</p>
+<ul>
+  <li>8GB RAM (16GB recommended for larger models)</li>
+  <li>4GB free disk space</li>
+  <li>x86_64 or ARM64 processor</li>
+  <li>Linux, macOS, or Windows (via WSL2)</li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="macos">macOS</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-L</span> https://ollama.com/download/ollama-darwin-amd64 <span class="nt">-o</span> ollama
+<span class="nb">chmod</span> +x ollama
+<span class="nb">sudo mv </span>ollama /usr/local/bin
+</code></pre></div></div>
+
+<h3 id="linux">Linux</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-L</span> https://ollama.com/download/ollama-linux-amd64 <span class="nt">-o</span> ollama
+<span class="nb">chmod</span> +x ollama
+<span class="nb">sudo mv </span>ollama /usr/local/bin
+</code></pre></div></div>
+
+<h3 id="windows-via-wsl2">Windows (via WSL2)</h3>
+<ol>
+  <li>Install WSL2 if you haven’t already:
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">wsl</span><span class="w"> </span><span class="nt">--install</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>Follow the Linux installation instructions within WSL2.</li>
+</ol>
+
+<h2 id="running-your-first-model">Running Your First Model</h2>
+
+<ol>
+  <li>Start the Ollama service:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama serve
+</code></pre></div>    </div>
+  </li>
+  <li>In a new terminal, pull and run a model. Let’s start with a smaller one:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run mistral
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>This will download and start the Mistral model, a powerful yet efficient language model.</p>
+
+<h2 id="popular-models-to-try">Popular Models to Try</h2>
+
+<p>Here are some recommended models to get started:</p>
+
+<ol>
+  <li><strong>Mistral</strong> (6.7B parameters)
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run mistral
+</code></pre></div>    </div>
+    <ul>
+      <li>Good balance of performance and resource usage</li>
+      <li>Great for general-purpose tasks</li>
+    </ul>
+  </li>
+  <li><strong>Llama2</strong> (7B parameters)
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run llama2
+</code></pre></div>    </div>
+    <ul>
+      <li>Meta’s open-source model</li>
+      <li>Excellent for coding and analysis</li>
+    </ul>
+  </li>
+  <li><strong>Code Llama</strong> (7B parameters)
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run codellama
+</code></pre></div>    </div>
+    <ul>
+      <li>Specialized for programming tasks</li>
+      <li>Supports multiple programming languages</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="optimizing-performance">Optimizing Performance</h2>
+
+<p>To get the best performance from your local LLM:</p>
+
+<ol>
+  <li><strong>Adjust Context Length</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run mistral <span class="nt">--context-length</span> 4096
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Control Memory Usage</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run mistral <span class="nt">--gpu-layers</span> 35
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Use Quantized Models</strong>
+For systems with limited resources, use quantized versions:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run mistral:7b-q4_k_m
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="using-the-api">Using the API</h2>
+
+<p>Ollama provides a REST API for integration with applications. Here’s a Python example:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="k">def</span> <span class="nf">query_ollama</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'http://localhost:11434/api/generate'</span><span class="p">,</span>
+                           <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+                               <span class="s">'model'</span><span class="p">:</span> <span class="s">'mistral'</span><span class="p">,</span>
+                               <span class="s">'prompt'</span><span class="p">:</span> <span class="n">prompt</span>
+                           <span class="p">})</span>
+    <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'response'</span><span class="p">]</span>
+
+<span class="c1"># Example usage
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">query_ollama</span><span class="p">(</span><span class="s">"Explain quantum computing in simple terms"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<ol>
+  <li><strong>Model Selection</strong>
+    <ul>
+      <li>Start with smaller models (like Mistral) and scale up as needed</li>
+      <li>Use specialized models for specific tasks (e.g., Code Llama for programming)</li>
+    </ul>
+  </li>
+  <li><strong>Resource Management</strong>
+    <ul>
+      <li>Monitor system resources using <code class="language-plaintext highlighter-rouge">htop</code> or Activity Monitor</li>
+      <li>Close unnecessary applications when running larger models</li>
+      <li>Use quantized models on systems with limited resources</li>
+    </ul>
+  </li>
+  <li><strong>Security Considerations</strong>
+    <ul>
+      <li>Run models locally for sensitive data</li>
+      <li>Keep Ollama updated for security patches</li>
+      <li>Be cautious with network access when using the API</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>Common issues and solutions:</p>
+
+<ol>
+  <li><strong>Out of Memory</strong>
+    <ul>
+      <li>Use a smaller model</li>
+      <li>Reduce context length</li>
+      <li>Try a quantized version</li>
+      <li>Close other applications</li>
+    </ul>
+  </li>
+  <li><strong>Slow Performance</strong>
+    <ul>
+      <li>Check GPU utilization</li>
+      <li>Adjust <code class="language-plaintext highlighter-rouge">gpu-layers</code> parameter</li>
+      <li>Use SSD for model storage</li>
+      <li>Consider hardware acceleration options</li>
+    </ul>
+  </li>
+  <li><strong>Model Download Issues</strong>
+    <ul>
+      <li>Check internet connection</li>
+      <li>Verify disk space</li>
+      <li>Try alternative download mirrors</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Ollama makes it remarkably easy to run LLMs locally, providing a great balance between accessibility and performance. Whether you’re a developer, researcher, or enthusiast, having local access to these powerful models opens up numerous possibilities for AI integration in your projects.</p>
+
+<p>Remember to:</p>
+<ul>
+  <li>Start with smaller models and scale up as needed</li>
+  <li>Monitor system resources</li>
+  <li>Keep security in mind when handling sensitive data</li>
+  <li>Stay updated with the latest Ollama releases</li>
+</ul>
+
+<p>For more information and updates, visit the <a href="https://github.com/ollama/ollama">Ollama GitHub repository</a> and join their community discussions.</p>
+
+
+      </section>
+    </div>
+    <footer>
+    
+      <p>Webpage maintained by <a href="https://github.com/atwalharry7">atwalharry7</a></p>
+    
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  </body>
+</html>

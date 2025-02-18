@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Installing NVIDIA GPU Drivers on Ubuntu 20.04 (Offline Guide) | Harry’s Website</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Installing NVIDIA GPU Drivers on Ubuntu 20.04 (Offline Guide)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A comprehensive guide for installing NVIDIA GPU drivers on Ubuntu 20.04 without internet access, specifically for GTX 1080 GPUs." />
+<meta property="og:description" content="A comprehensive guide for installing NVIDIA GPU drivers on Ubuntu 20.04 without internet access, specifically for GTX 1080 GPUs." />
+<link rel="canonical" href="http://0.0.0.0:50988/_posts/2023-12-31-installing-gpu-drivers.html" />
+<meta property="og:url" content="http://0.0.0.0:50988/_posts/2023-12-31-installing-gpu-drivers.html" />
+<meta property="og:site_name" content="Harry’s Website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-12-31T17:10:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Installing NVIDIA GPU Drivers on Ubuntu 20.04 (Offline Guide)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-12-31T17:10:00-05:00","datePublished":"2023-12-31T17:10:00-05:00","description":"A comprehensive guide for installing NVIDIA GPU drivers on Ubuntu 20.04 without internet access, specifically for GTX 1080 GPUs.","headline":"Installing NVIDIA GPU Drivers on Ubuntu 20.04 (Offline Guide)","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:50988/_posts/2023-12-31-installing-gpu-drivers.html"},"url":"http://0.0.0.0:50988/_posts/2023-12-31-installing-gpu-drivers.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=3ed4c76fe1a4cb374077a1c422ccd461bfd427fd">
+    <link rel="stylesheet" href="/assets/css/navigation.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+    <script src="/assets/js/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header >
+        <h1>Harry's Website</h1>
+        
+          <p>Learning one day at a time, living one day at a time, and sharing one day at a time.</p>
+        
+        <nav class="site-nav">
+  <div class="nav-links">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/posts" class="nav-link">Blog Posts</a>
+  </div>
+</nav>
+        <!-- <p class="view"><a href="https://github.com/atwalharry7/atwalharry7.github.io">View the Project on GitHub <small></small></a></p> -->
+        <ul>
+        
+          <!-- <li><a href="https://github.com/atwalharry7/atwalharry7.github.io">View On <strong>GitHub</strong></a></li> -->
+        </ul>
+      </header>
+      <section>
+
+      <h1 id="installing-nvidia-gpu-drivers-on-ubuntu-2004-for-1080-gpu">Installing Nvidia GPU drivers on Ubuntu 20.04 for 1080 GPU</h1>
+
+<p>As a machine learning developer, you’l often find yourself installing programs and applications developed by others. Sometimes if you aren’t careful, they’re changes can overwrite files used by you. This leads to situations like the one I faced recently. 
+A unamed program borked my desktop so bad that i needed to reinstall the drivers for my gpu without having ready access to the internet. So this guide is a way to have this information handy.</p>
+
+<h1 id="this-is-a-guide-to-installing-nvidia-gpu-drivers-on-ubuntu-2004-for-a-1080-gpu">This is a guide to installing Nvidia GPU drivers on Ubuntu 20.04 for a 1080 GPU.</h1>
+
+<h2 id="installing-nvidia-drivers-for-gtx-1080-on-ubuntu-20-offline">Installing NVIDIA Drivers for GTX 1080 on Ubuntu 20 (Offline)</h2>
+
+<h3 id="prerequisites">Prerequisites</h3>
+<ol>
+  <li>Download the required NVIDIA driver package from the official <a href="https://www.nvidia.com/Download/index.aspx">NVIDIA website</a> on a system with internet access.</li>
+  <li>Transfer the downloaded driver package to your Ubuntu 20 machine using a USB drive or other offline transfer method.</li>
+</ol>
+
+<h3 id="step-1-update-system-packages">Step 1: Update System Packages</h3>
+
+<p>Ensure your system is up-to-date (even offline) to avoid compatibility issues:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt upgrade <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>(Optional) If you need additional system updates, you can download the necessary package files (.deb) on another machine and manually transfer them.</p>
+
+<hr />
+
+<h3 id="step-2-prepare-for-nvidia-driver-installation">Step 2: Prepare for NVIDIA Driver Installation</h3>
+
+<h4 id="a-blacklist-the-nouveau-driver">a. Blacklist the Nouveau Driver</h4>
+
+<ol>
+  <li>
+    <p>Create a configuration file to disable the Nouveau driver:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>nano /etc/modprobe.d/blacklist-nouveau.conf
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the following lines:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>blacklist nouveau
+options nouveau modeset=0
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Regenerate the kernel initramfs:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>update-initramfs <span class="nt">-u</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Reboot the machine:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>reboot
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="step-3-install-build-tools">Step 3: Install Build Tools</h3>
+
+<p>NVIDIA drivers require some build tools to compile kernel modules. Install them using:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>build-essential gcc make dkms <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>If offline, download the <code class="language-plaintext highlighter-rouge">.deb</code> packages for these dependencies from a system with internet access and install them using <code class="language-plaintext highlighter-rouge">dpkg</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>dpkg <span class="nt">-i</span> /path/to/package.deb
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="step-4-install-the-nvidia-driver">Step 4: Install the NVIDIA Driver</h3>
+
+<ol>
+  <li>
+    <p>Navigate to the directory where the driver file is stored:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /path/to/driver
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Make the downloaded driver file executable:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x NVIDIA-Linux-x86_64-&lt;version&gt;.run
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the installer:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./NVIDIA-Linux-x86_64-&lt;version&gt;.run  <span class="c"># Sub in your version! </span>
+</code></pre></div>    </div>
+
+    <p>Replace <code class="language-plaintext highlighter-rouge">&lt;version&gt;</code> with the specific driver version you downloaded (e.g., <code class="language-plaintext highlighter-rouge">NVIDIA-Linux-x86_64-470.141.03.run</code>).</p>
+  </li>
+  <li>Follow the on-screen instructions:
+    <ul>
+      <li>Accept the license agreement.</li>
+      <li>Choose the default options unless you have specific requirements.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Once the installation is complete, reboot the system:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>reboot
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="step-5-verify-installation">Step 5: Verify Installation</h3>
+
+<p>After rebooting, check if the NVIDIA driver is installed and functioning correctly:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvidia-smi
+</code></pre></div></div>
+
+<p>This command should display information about your NVIDIA GPU, including the driver version.</p>
+
+<hr />
+
+<h3 id="troubleshooting">Troubleshooting</h3>
+
+<ul>
+  <li><strong>Error: “Unable to load the NVIDIA kernel module”</strong>
+    <ul>
+      <li>Ensure Secure Boot is disabled in your BIOS settings. ** this is something that I had to do.**</li>
+      <li>Reboot and retry the driver installation.</li>
+    </ul>
+  </li>
+  <li><strong>Dependency Issues:</strong>
+    <ul>
+      <li>Use <code class="language-plaintext highlighter-rouge">dpkg -i</code> to install missing dependencies manually.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="notes">Notes</h3>
+
+<ul>
+  <li>This guide assumes basic familiarity with Ubuntu and the terminal.</li>
+  <li>If additional dependencies are needed, download them on another system and transfer them to the Ubuntu machine.</li>
+</ul>
+
+
+
+      </section>
+    </div>
+    <footer>
+    
+      <p>Webpage maintained by <a href="https://github.com/atwalharry7">atwalharry7</a></p>
+    
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+  </body>
+</html>
