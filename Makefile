@@ -1,6 +1,8 @@
 # Common commands
 build_site:
-    bundle exec jekyll build
+	bundle exec jekyll build
 
-run_local_webserver:
-    bundle exec jekyll serve --watch --baseurl --livereload
+run_local:
+	bundle exec jekyll serve --watch 
+
+all: build_site run_local
