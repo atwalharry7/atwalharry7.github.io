@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Blog Posts
+title: Blog
 permalink: /posts/
 ---
 
-# Blog Posts
+# Blog
 
 {% for post in site.posts %}
   <article class="post-preview">
