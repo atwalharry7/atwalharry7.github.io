@@ -34,13 +34,6 @@ I enjoy capturing moments that tell stories, whether it's the golden hour light 
 **
 
 ### Street Photography
-*Coming soon - candid moments from urban life*
-
-### Nature & Wildlife
-*Coming soon - the beauty of the natural world*
-
-### Travel
-*Coming soon - memories from around the world*
 
 ## Equipment
 
