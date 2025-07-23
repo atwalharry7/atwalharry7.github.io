@@ -8,19 +8,23 @@ permalink: /
 ---
 
 
-# Harry Atwal
+# Harry Atwal 
 
 Welcome to my personal website! I am a passionate machine learning researcher with a keen interest in developing innovative solutions to complex problems. Here, you can find information about my projects, my resume, and my contact details. 
 
 This site will also serve as a platform for me to share my thoughts on various topics related to machine learning and artificial intelligence. Sometimes I will write about things that having nothing to do with machine learning or AI. I'm a father, husband, and human being after. I enjoy mountain biking, consider myself a tinker (both electronics and woodworking), and love to cook.
 
-## About Me
+
+## About Me 
+
+![Mountain Biking](/assets/MountainbikinginBrekenridge.jpg)
 
 I am a machine learning researcher with experience in various domains including natural language processing, computer vision, and reinforcement learning. My goal is to leverage machine learning techniques to create impactful and scalable solutions. 
 
-The last 7 years i've worked in machine vision projects that incoroporate machine learning. I've worked on projects that range from simple object detection to complex image segmentation. I've also worked on projects that involve reinforcement learning and natural language processing. As a researcher at the University of North Carolina Wilmington; I was able to work on various projects that involved machine learning and computer vision. 
+The last 9 years I’ve worked in machine vision projects that incorporate machine learning. I've worked on projects that range from simple object detection to complex image segmentation. I've also worked on projects that involve reinforcement learning and natural language processing. As a researcher at the University of North Carolina Wilmington; I was able to work on various projects that involved machine learning and computer vision in industries such as the intelligence community, private insurance, and lately local businesses hoping to hop on the AI trend. 
 
-## [blog](/blog)
+I consider myself to be a full stack problem solver. When you have a passion for technology as deep as mine, your homepage is set to engadget and you're constantly seeing what’s new and emerging. While I may not be the strongest coder, I know how to get things done in tight timelines while maintaining security and compliance with the system requirements.
+
 
 ## Resume
 
