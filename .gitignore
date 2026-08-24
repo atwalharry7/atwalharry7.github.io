@@ -27,3 +27,14 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+_site
+_site*
+_site/*
+_site
+
+
+.bundle/
+vendor/
+
+
