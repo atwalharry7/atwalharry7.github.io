@@ -27,3 +27,15 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+_site
+_site*
+_site/*
+_site
+_includes
+_layouts
+_pages
+
+Gemfile.lock
+.bundle/
+
