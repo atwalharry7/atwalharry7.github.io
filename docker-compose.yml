@@ -1,0 +1,26 @@
+# Local preview: `make run_local`, then open http://127.0.0.1:4001
+services:
+  jekyll:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: ["bundle", "exec", "jekyll", "build", "--watch", "--force_polling", "--destination", "/site-output"]
+    environment:
+      PAGES_REPO_NWO: atwalharry7/atwalharry7.github.io
+      BUNDLE_PATH: /usr/local/bundle
+    volumes:
+      - .:/srv/site
+      - site-output:/site-output
+
+  web:
+    image: nginx:alpine
+    depends_on:
+      - jekyll
+    ports:
+      - "127.0.0.1:4001:80"
+    volumes:
+      - site-output:/usr/share/nginx/html:ro
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+volumes:
+  site-output:

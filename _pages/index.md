@@ -3,12 +3,21 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: default #home 
+landing: true
 title: "Harry Atwal"
 permalink: /
 ---
 
 
-# Harry Atwal 
+<div class="landing-hero" markdown="0">
+  <canvas class="landing-canvas" data-particles aria-hidden="true"></canvas>
+</div>
+
+<div class="landing-intro" markdown="0">
+  <h2>Forward Deployed Engineer</h2>
+  <p class="landing-lede">Working across computer vision, NLP, and reinforcement learning. Outside work: mountain biking, electronics and woodworking, and cooking.</p>
+</div>
+
 
 Welcome to my personal website! I am a passionate machine learning researcher with a keen interest in developing innovative solutions to complex problems. Here, you can find information about my projects, my resume, and my contact details. 
 

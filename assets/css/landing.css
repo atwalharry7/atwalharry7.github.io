@@ -1,0 +1,164 @@
+/* Landing page: the particle field is the background for the whole homepage.
+   The header and content sit on top of it in light text. */
+
+body.landing-page {
+  --font-display: 'OCR-A', 'JetBrains Mono', monospace;
+  --fs-title: clamp(2rem, 4.2vw, 3.25rem);
+  --fs-body: clamp(0.95rem, 1.1vw, 1.1rem);
+  --fs-small: clamp(0.75rem, 0.9vw, 0.85rem);
+  --page-bg: #0b1220;
+  --text: #e8f1fb;
+  --text-muted: #c3d4e6;
+  --text-faint: #9fb7d1;
+  --link: #7fc4ff;
+  --particle-color: #7fc4ff;
+  padding: 0;
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+body.landing-page .wrapper {
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  position: relative;
+  z-index: 0;
+}
+
+/* Header: centered, transparent, in normal flow so content always clears it. */
+body.landing-page header {
+  padding: 3rem max(20px, calc(50% - 350px)) 3.5rem;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  text-align: center;
+  color: var(--text);
+}
+
+body.landing-page header h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-title);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 2px 12px;
+}
+
+body.landing-page header p {
+  margin: 0.5rem auto 0;
+  max-width: 640px;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--text-faint);
+}
+
+body.landing-page header ul {
+  display: none;
+}
+
+body.landing-page .site-nav {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+body.landing-page .nav-links {
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+body.landing-page .nav-link {
+  font-size: var(--fs-small);
+  color: var(--text);
+}
+
+body.landing-page .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* Particle field: spans the whole homepage behind everything else.
+   The wrapper is its containing block; z-index -1 keeps it under the text. */
+.landing-hero {
+  --particle-color: #7fc4ff;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+  margin: 0;
+  background: radial-gradient(ellipse at 50% 0%, #1b2a40 0%, #0b1220 70%);
+}
+
+.landing-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  pointer-events: none;
+}
+
+/* Content: transparent over the particle field, light text, same type scale. */
+body.landing-page section {
+  position: static;
+  padding: 0 0 20px;
+  border-top: 0;
+  background: none;
+  color: var(--text);
+  font-size: var(--fs-body);
+}
+
+/* Every content child uses the centered 700px column; the particle hero spans the full width. */
+body.landing-page section > *:not(.landing-hero) {
+  margin-left: max(20px, calc(50% - 350px));
+  margin-right: max(20px, calc(50% - 350px));
+}
+
+body.landing-page section h2 {
+  color: #ffffff;
+  font-size: calc(var(--fs-body) * 1.5);
+  line-height: 1.2;
+}
+
+body.landing-page section a {
+  color: var(--link);
+}
+
+body.landing-page footer,
+body.landing-page footer a {
+  color: var(--text-muted);
+}
+
+/* Intro block: heading plus a lead paragraph, in the content column. */
+.landing-intro h2 {
+  margin-top: 0;
+}
+
+.landing-intro {
+  margin-bottom: 2rem;
+}
+
+.landing-intro .landing-lede {
+  margin: 0;
+  font-size: calc(var(--fs-body) * 1.15);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+@media (max-width: 800px) {
+  body.landing-page header {
+    padding-top: 1.75rem;
+    padding-bottom: 2.5rem;
+  }
+
+  body.landing-page .nav-links {
+    gap: 0.25rem 1rem;
+  }
+}
