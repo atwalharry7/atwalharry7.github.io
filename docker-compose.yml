@@ -8,7 +8,6 @@ services:
     environment:
       PAGES_REPO_NWO: atwalharry7/atwalharry7.github.io
       BUNDLE_PATH: /usr/local/bundle
-      RUBYOPT: "-r/srv/site/docker/taint_shim.rb"
     volumes:
       - .:/srv/site
       - site-output:/site-output

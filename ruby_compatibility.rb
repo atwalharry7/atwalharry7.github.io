@@ -1,27 +1,13 @@
-# Ruby 3.2+ compatibility patch for older Liquid/Jekyll versions.
-# In Ruby 3.2+, Object#tainted?, Object#taint, and Object#untaint were completely removed.
-# This patch defines them as safe no-ops to prevent legacy gems from crashing.
-
+# Ruby >= 3.2 removed the taint APIs that Liquid 4 (pinned by github-pages / Jekyll 3.x)
+# still calls. Defines them as no-ops. Loaded first via the Gemfile `require:` list, so it
+# applies to both `bundle exec jekyll` on the host and inside the Docker image.
 unless Object.method_defined?(:tainted?)
   class Object
-    def tainted?
-      false
-    end
-  end
-end
-
-unless Object.method_defined?(:taint)
-  class Object
-    def taint
-      self
-    end
-  end
-end
-
-unless Object.method_defined?(:untaint)
-  class Object
-    def untaint
-      self
-    end
+    def tainted? = false
+    def taint = self
+    def untaint = self
+    def trust = self
+    def untrust = self
+    def untrusted? = false
   end
 end
