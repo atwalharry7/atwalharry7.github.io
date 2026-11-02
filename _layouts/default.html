@@ -8,6 +8,9 @@
 
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/navigation.css' | relative_url }}">
+    {% if page.landing %}
+    <link rel="stylesheet" href="{{ '/assets/css/landing.css' | relative_url }}">
+    {% endif %}
     <link rel="stylesheet" href="{{ '/assets/css/blog.css' | relative_url }}">
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -47,5 +50,8 @@
     {% endif %}
     </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    {% if page.landing %}
+    <script src="{{ '/assets/js/particles.js' | relative_url }}" defer></script>
+    {% endif %}
   </body>
 </html>

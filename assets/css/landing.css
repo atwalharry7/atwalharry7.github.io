@@ -1,0 +1,100 @@
+.landing-hero {
+  --particle-color: #7fc4ff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 340px;
+  padding: 4rem 2rem;
+  margin: 0 0 2rem;
+  border-radius: 8px;
+  background: radial-gradient(ellipse at 50% 0%, #1b2a40 0%, #0b1220 70%);
+  color: #e8f1fb;
+  text-align: center;
+}
+
+.landing-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  pointer-events: auto;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+}
+
+.landing-eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--particle-color);
+}
+
+.landing-title {
+  margin: 0 0 1rem;
+  font-size: 2.6rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 2px 12px;
+}
+
+.landing-lede {
+  margin: 0 0 1.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #c3d4e6;
+}
+
+.landing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.landing-btn {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  color: #ffffff;
+  font-weight: 400;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.landing-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--particle-color);
+  color: #ffffff;
+}
+
+.landing-btn-primary {
+  background: var(--particle-color);
+  border-color: var(--particle-color);
+  color: #0b1220;
+}
+
+.landing-btn-primary:hover {
+  background: #a6d8ff;
+  border-color: #a6d8ff;
+  color: #0b1220;
+}
+
+@media (max-width: 800px) {
+  .landing-hero {
+    min-height: 300px;
+    padding: 3rem 1.25rem;
+  }
+
+  .landing-title {
+    font-size: 2rem;
+  }
+}
