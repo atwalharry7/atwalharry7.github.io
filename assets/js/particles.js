@@ -12,6 +12,9 @@
   var POINTER_RADIUS = 140;
   var MAX_SPEED = 1.4;
   var MIN_SPEED = 0.12;
+  var MAX_PARTICLES = 260;
+  var TEXT_HALF = 350;
+  var DIM_ALPHA = 0.3;
 
   var width = 0;
   var height = 0;
@@ -22,11 +25,26 @@
   var inView = true;
   var rafId = 0;
 
+  function edgeAlpha(x) {
+    var offset = Math.abs(x - width / 2);
+    var textHalf = Math.min(TEXT_HALF, width * 0.35);
+    if (offset <= textHalf) return DIM_ALPHA;
+    return DIM_ALPHA + (1 - DIM_ALPHA) * Math.min(1, (offset - textHalf) / 200);
+  }
+
+  function spawnX() {
+    var x;
+    do {
+      x = Math.random() * width;
+    } while (edgeAlpha(x) === DIM_ALPHA && Math.random() > 0.35);
+    return x;
+  }
+
   function randomParticle() {
     var angle = Math.random() * Math.PI * 2;
     var speed = 0.2 + Math.random() * 0.4;
     return {
-      x: Math.random() * width,
+      x: spawnX(),
       y: Math.random() * height,
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
@@ -44,7 +62,7 @@
     canvas.style.height = height + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    var count = Math.min(120, Math.floor((width * height) / 9000));
+    var count = Math.min(MAX_PARTICLES, Math.floor((width * height) / 5000));
     particles = [];
     for (var i = 0; i < count; i++) particles.push(randomParticle());
     draw();
@@ -89,6 +107,7 @@
     ctx.fillStyle = color;
     ctx.strokeStyle = color;
     ctx.lineWidth = 1;
+    for (var q = 0; q < particles.length; q++) particles[q].a = edgeAlpha(particles[q].x);
 
     var linkSq = LINK_DIST * LINK_DIST;
     for (var i = 0; i < particles.length; i++) {
@@ -99,7 +118,7 @@
         var dy = a.y - b.y;
         var d2 = dx * dx + dy * dy;
         if (d2 < linkSq) {
-          ctx.globalAlpha = (1 - d2 / linkSq) * 0.35;
+          ctx.globalAlpha = (1 - d2 / linkSq) * 0.35 * Math.min(a.a, b.a);
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
@@ -108,9 +127,9 @@
       }
     }
 
-    ctx.globalAlpha = 0.9;
     for (var k = 0; k < particles.length; k++) {
       var p = particles[k];
+      ctx.globalAlpha = p.a * 0.9;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fill();
@@ -137,9 +156,11 @@
 
   function pointerAt(event) {
     var rect = canvas.getBoundingClientRect();
-    pointer.x = event.clientX - rect.left;
-    pointer.y = event.clientY - rect.top;
-    pointer.active = true;
+    var x = event.clientX - rect.left;
+    var y = event.clientY - rect.top;
+    pointer.active = x >= 0 && y >= 0 && x <= rect.width && y <= rect.height;
+    pointer.x = x;
+    pointer.y = y;
   }
 
   color = getComputedStyle(container).getPropertyValue('--particle-color').trim() || color;
@@ -164,9 +185,9 @@
     else start();
   });
 
-  container.addEventListener('pointermove', pointerAt);
-  container.addEventListener('pointerdown', pointerAt);
-  container.addEventListener('pointerleave', function () {
+  document.addEventListener('pointermove', pointerAt);
+  document.addEventListener('pointerdown', pointerAt);
+  document.documentElement.addEventListener('pointerleave', function () {
     pointer.active = false;
   });
 

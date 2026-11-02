@@ -11,17 +11,13 @@ permalink: /
 
 <div class="landing-hero" markdown="0">
   <canvas class="landing-canvas" data-particles aria-hidden="true"></canvas>
-  <div class="landing-content">
-    <p class="landing-eyebrow">Forward Deployed Engineer</p>
-    <h1 class="landing-title">Harry Atwal</h1>
-    <p class="landing-lede">Working across computer vision, NLP, and reinforcement learning. Outside work: mountain biking, electronics and woodworking, and cooking.</p>
-    <div class="landing-actions">
-      <a class="landing-btn landing-btn-primary" href="{{ '/posts' | relative_url }}">Read the blog</a>
-      <a class="landing-btn" href="{{ '/content/AtwalH-Modern2024.pdf' | relative_url }}">Resume</a>
-      <a class="landing-btn" href="{{ '/contact' | relative_url }}">Contact</a>
-    </div>
-  </div>
 </div>
+
+<div class="landing-intro" markdown="0">
+  <h2>Forward Deployed Engineer</h2>
+  <p class="landing-lede">Working across computer vision, NLP, and reinforcement learning. Outside work: mountain biking, electronics and woodworking, and cooking.</p>
+</div>
+
 
 Welcome to my personal website! I am a passionate machine learning researcher with a keen interest in developing innovative solutions to complex problems. Here, you can find information about my projects, my resume, and my contact details. 
 
