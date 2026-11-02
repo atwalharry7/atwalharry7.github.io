@@ -12,7 +12,7 @@ permalink: /
 <div class="landing-hero" markdown="0">
   <canvas class="landing-canvas" data-particles aria-hidden="true"></canvas>
   <div class="landing-content">
-    <p class="landing-eyebrow">Machine learning researcher</p>
+    <p class="landing-eyebrow">Forward Deployed Engineer</p>
     <h1 class="landing-title">Harry Atwal</h1>
     <p class="landing-lede">Working across computer vision, NLP, and reinforcement learning. Outside work: mountain biking, electronics and woodworking, and cooking.</p>
     <div class="landing-actions">

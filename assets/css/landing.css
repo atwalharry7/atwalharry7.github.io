@@ -6,10 +6,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 340px;
+  min-height: 85vh;
   padding: 4rem 2rem;
   margin: 0 0 2rem;
-  border-radius: 8px;
   background: radial-gradient(ellipse at 50% 0%, #1b2a40 0%, #0b1220 70%);
   color: #e8f1fb;
   text-align: center;
@@ -88,9 +87,40 @@
   color: #0b1220;
 }
 
+/* Full-bleed layout: the theme's 740px card becomes full width; text stays in a ~700px column. */
+body.landing-page {
+  padding: 0;
+  background: #DEDEDE;
+}
+
+body.landing-page .wrapper {
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body.landing-page header {
+  border-radius: 0;
+  padding-left: max(20px, calc(50% - 350px));
+  padding-right: max(20px, calc(50% - 350px));
+}
+
+body.landing-page section {
+  padding: 0 0 20px;
+}
+
+body.landing-page section > * {
+  margin-left: max(20px, calc(50% - 350px));
+  margin-right: max(20px, calc(50% - 350px));
+}
+
+body.landing-page section > .landing-hero {
+  margin: 0 0 2rem;
+}
+
 @media (max-width: 800px) {
   .landing-hero {
-    min-height: 300px;
+    min-height: 70vh;
     padding: 3rem 1.25rem;
   }
 
